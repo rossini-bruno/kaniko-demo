@@ -9,7 +9,8 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
     args: ["--context=git://github.com/rossini-bruno/kaniko-demo",
-            "--destination=us-central1-docker.pkg.dev/charged-chess-357014/docker-test/devops-toolkit:1.0.0"]
+            "--destination=us-central1-docker.pkg.dev/charged-chess-357014/docker-test/devops-toolkit:1.0.0",
+            "--snapshotMode=redo"]
     volumeMounts:
       - name: kaniko-secret
         mountPath: /var/secrets/google
