@@ -12,13 +12,13 @@ spec:
             "--destination=us-central1-docker.pkg.dev/charged-chess-357014/docker-test/devops-toolkit:1.0.0"]
     volumeMounts:
       - name: kaniko-secret
-        mountPath: /kaniko/.docker
+        mountPath: /var/secrets/google
+    env:
+      - name: GOOGLE_APPLICATION_CREDENTIALS
+        value: /var/secrets/google/key.json
   restartPolicy: Never
   volumes:
     - name: kaniko-secret
       secret:
-        secretName: regcred
-        items:
-          - key: .dockerconfigjson
-            path: config.json
+        secretName: pubsub-key
 
